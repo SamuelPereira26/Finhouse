@@ -2,6 +2,11 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 const PUBLIC_PATHS = ['/api/telegram/webhook'];
+type SupabaseCookie = {
+  name: string;
+  value: string;
+  options?: Record<string, unknown>;
+};
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -31,9 +36,11 @@ export async function middleware(request: NextRequest) {
       getAll() {
         return request.cookies.getAll();
       },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value));
-        cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+      setAll(cookiesToSet: SupabaseCookie[]) {
+        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+        cookiesToSet.forEach(({ name, value, options }) =>
+          response.cookies.set(name, value, options as any)
+        );
       }
     }
   });
