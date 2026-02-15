@@ -172,7 +172,7 @@ export function getLastDayOfMonth(month: string): string {
 
 export function isReviewDay(dateInput: Date | string): boolean {
   const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput;
-  return REVIEW_CONFIG.REVIEW_DAYS.includes(date.getDate());
+  return (REVIEW_CONFIG.REVIEW_DAYS as readonly number[]).includes(date.getDate());
 }
 
 export function getFirstSundayOfMonth(month: string): string {

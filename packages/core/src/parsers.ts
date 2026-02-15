@@ -137,7 +137,7 @@ export function parseBBVA(content: Buffer | ArrayBuffer | string, sourceInfo: So
   const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, { defval: '' });
 
   return rows
-    .map((row, index) => {
+    .map((row, index): ParsedRow | null => {
       const rawDate =
         row.Fecha ??
         row.fecha ??
@@ -158,7 +158,7 @@ export function parseBBVA(content: Buffer | ArrayBuffer | string, sourceInfo: So
       const description = String(rawDescription).trim();
 
       return {
-        source: 'BBVA',
+        source: 'BBVA' as const,
         source_row_id: `BBVA-${index + 2}`,
         account_id: sourceInfo.account_id,
         date: parseDate(rawDate),
@@ -174,7 +174,7 @@ export function parseBBVA(content: Buffer | ArrayBuffer | string, sourceInfo: So
         income_fixed_or_variable: null,
         income_detail: null,
         user_note: null
-      } satisfies ParsedRow;
+      };
     })
     .filter((row): row is ParsedRow => row !== null);
 }
@@ -186,7 +186,7 @@ export function parseRevolut(content: string, sourceInfo: SourceInfo): ParsedRow
   });
 
   return parsed.data
-    .map((row, index) => {
+    .map((row, index): ParsedRow | null => {
       const description = String(row.Description ?? row.Reference ?? '').trim();
       if (!description) {
         return null;
@@ -195,7 +195,7 @@ export function parseRevolut(content: string, sourceInfo: SourceInfo): ParsedRow
       const amount = parseAmount(row.Amount);
       const type = mapRevolutType(row.Type ?? '', amount);
       return {
-        source: 'REVOLUT',
+        source: 'REVOLUT' as const,
         source_row_id: `REV-${index + 2}`,
         account_id: sourceInfo.account_id,
         date: parseDate(row['Completed Date'] ?? row.Date ?? row['Started Date']),
@@ -211,7 +211,7 @@ export function parseRevolut(content: string, sourceInfo: SourceInfo): ParsedRow
         income_fixed_or_variable: null,
         income_detail: null,
         user_note: null
-      } satisfies ParsedRow;
+      };
     })
     .filter((row): row is ParsedRow => row !== null);
 }
