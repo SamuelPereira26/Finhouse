@@ -62,6 +62,15 @@ export type RepositoryAdapter = {
   getTransactionsByImportBatch: (import_batch_id: string) => Promise<MasterRow[]>;
   updateTransaction: (tx_id: string, updates: Partial<MasterRow>) => Promise<void>;
   getPendingTransactions: () => Promise<MasterRow[]>;
+  getTransactions?: (filters: {
+    month?: string;
+    type?: string;
+    macro?: string;
+    status?: string;
+    includeTransfers?: boolean;
+    page?: number;
+    limit?: number;
+  }) => Promise<{ rows: MasterRow[]; total: number }>;
 };
 
 function accountLast4ById(account_id: string): string {
@@ -244,7 +253,7 @@ export async function processImportFile(
   const merged = await mergeToMaster(repo, batch.import_batch_id, parsedRows, sourceInfo);
 
   // Re-run transfer detection on full month scope to catch cross-batch matches.
-  if ('getTransactions' in repo && typeof repo.getTransactions === 'function') {
+  if (repo.getTransactions) {
     const months = [...new Set(parsedRows.map((row) => row.date.slice(0, 7)))];
     for (const month of months) {
       const snapshot = await repo.getTransactions({
