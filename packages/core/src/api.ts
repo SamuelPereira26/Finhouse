@@ -1,8 +1,8 @@
-import { CATEGORIES, MACRO_ORDER } from './constants.js';
-import { parseCash } from './parsers.js';
-import { classifyTransaction } from './rules.js';
-import type { BudgetsRow, MasterRow, RulesRow } from './types.js';
-import { extractMonth, generateTxId, verifyApiToken } from './utils.js';
+import { CATEGORIES, MACRO_ORDER } from './constants';
+import { parseCash } from './parsers';
+import { classifyTransaction } from './rules';
+import type { BudgetsRow, MasterRow, RulesRow } from './types';
+import { extractMonth, generateTxId, verifyApiToken } from './utils';
 
 export type ApiRepository = {
   getTransactions: (filters: {

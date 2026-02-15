@@ -1,6 +1,6 @@
-import type { ApiRepository } from './api.js';
-import type { ImportBatch, RepositoryAdapter } from './import-flow.js';
-import type { HealthRow, MasterRow, RulesRow } from './types.js';
+import type { ApiRepository } from './api';
+import type { ImportBatch, RepositoryAdapter } from './import-flow';
+import type { HealthRow, MasterRow, RulesRow } from './types';
 
 export class InMemoryRepository implements RepositoryAdapter, ApiRepository {
   imports = new Map<string, ImportBatch>();

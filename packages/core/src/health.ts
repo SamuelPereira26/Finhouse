@@ -1,6 +1,6 @@
-import { ACCOUNTS, HEALTH_CONFIG } from './constants.js';
-import type { HealthRow, ParsedRow, SourceInfo } from './types.js';
-import { daysDifference, formatDateISO, generateTxId, recordHealthCheck } from './utils.js';
+import { ACCOUNTS, HEALTH_CONFIG } from './constants';
+import type { HealthRow, ParsedRow, SourceInfo } from './types';
+import { daysDifference, formatDateISO, generateTxId, recordHealthCheck } from './utils';
 
 export function checkRowCount(import_batch_id: string, rows: ParsedRow[]): HealthRow[] {
   if (rows.length === 0) {

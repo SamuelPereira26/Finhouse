@@ -1,9 +1,9 @@
 import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
 
-import { ACCOUNTS, COLUMN_SIGNATURES } from './constants.js';
-import type { ParsedRow, SourceInfo, TransactionType } from './types.js';
-import { cleanText, parseAmount, parseDate } from './utils.js';
+import { ACCOUNTS, COLUMN_SIGNATURES } from './constants';
+import type { ParsedRow, SourceInfo, TransactionType } from './types';
+import { cleanText, parseAmount, parseDate } from './utils';
 
 type DetectInput = {
   fileName?: string;

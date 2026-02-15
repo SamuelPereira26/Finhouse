@@ -1,6 +1,6 @@
-import { HEALTH_CONFIG } from './constants.js';
-import type { MasterRow } from './types.js';
-import { cleanText, daysDifference } from './utils.js';
+import { HEALTH_CONFIG } from './constants';
+import type { MasterRow } from './types';
+import { cleanText, daysDifference } from './utils';
 
 export function normalizeText(value: string): string {
   return cleanText(value)

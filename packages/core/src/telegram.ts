@@ -1,6 +1,6 @@
-import { TELEGRAM } from './constants.js';
-import { createRule } from './rules.js';
-import { extractMonth, formatAmount } from './utils.js';
+import { TELEGRAM } from './constants';
+import { createRule } from './rules';
+import { extractMonth, formatAmount } from './utils';
 
 type TelegramApiResponse = {
   ok: boolean;

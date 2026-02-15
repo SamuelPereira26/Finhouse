@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 
-import { REVIEW_CONFIG } from './constants.js';
-import type { HealthRow } from './types.js';
+import { REVIEW_CONFIG } from './constants';
+import type { HealthRow } from './types';
 
 export function generateUUID(): string {
   return randomUUID();

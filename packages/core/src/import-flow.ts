@@ -1,11 +1,11 @@
-import { ACCOUNTS } from './constants.js';
-import { runHealthChecks } from './health.js';
-import { detectSource, parseFile } from './parsers.js';
-import { checkPatternSuggestions, classifyTransaction } from './rules.js';
-import { sendTelegramNotification } from './telegram.js';
-import { runTransferDetection } from './transfer.js';
-import type { HealthRow, MasterRow, ParsedRow, RulesRow, SourceInfo } from './types.js';
-import { extractMonth, generateTxId, generateUUID } from './utils.js';
+import { ACCOUNTS } from './constants';
+import { runHealthChecks } from './health';
+import { detectSource, parseFile } from './parsers';
+import { checkPatternSuggestions, classifyTransaction } from './rules';
+import { sendTelegramNotification } from './telegram';
+import { runTransferDetection } from './transfer';
+import type { HealthRow, MasterRow, ParsedRow, RulesRow, SourceInfo } from './types';
+import { extractMonth, generateTxId, generateUUID } from './utils';
 
 export type ImportBatch = {
   import_batch_id: string;

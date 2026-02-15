@@ -1,6 +1,6 @@
-import { CATEGORIES, CONFIDENCE_THRESHOLDS, FIXED_SUBSCRIPTION_RULES } from './constants.js';
-import type { ClassificationResult, MasterRow, ParsedRow, RulesRow } from './types.js';
-import { cleanText, generateUUID } from './utils.js';
+import { CATEGORIES, CONFIDENCE_THRESHOLDS, FIXED_SUBSCRIPTION_RULES } from './constants';
+import type { ClassificationResult, MasterRow, ParsedRow, RulesRow } from './types';
+import { cleanText, generateUUID } from './utils';
 
 function statusFromConfidence(confidence: number): ClassificationResult['review_status'] {
   if (confidence >= CONFIDENCE_THRESHOLDS.AUTO_OK) {
