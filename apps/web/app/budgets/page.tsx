@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { MACRO_ORDER } from '@finhouse/core';
 
 import { Card } from '@/components/ui/card';

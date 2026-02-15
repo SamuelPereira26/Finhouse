@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { formatAmount, getAnalytics } from '@finhouse/core';
 
 import { TrendChart } from '@/components/charts/trend-chart';

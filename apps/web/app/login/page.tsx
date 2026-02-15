@@ -1,12 +1,12 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { Card } from '@/components/ui/card';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 
-export default function LoginPage() {
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -81,5 +81,13 @@ export default function LoginPage() {
         {message ? <p className="text-sm text-amber-900/80">{message}</p> : null}
       </form>
     </Card>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<Card title="Login"><p>Cargando...</p></Card>}>
+      <LoginForm />
+    </Suspense>
   );
 }
