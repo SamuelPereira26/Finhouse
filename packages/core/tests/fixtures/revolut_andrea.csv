@@ -1,0 +1,3 @@
+Completed Date,Type,Description,Amount,Fee,Currency,State,Balance
+2026-02-11,TRANSFER,Transfer from Samuel,100.00,0,EUR,COMPLETED,500
+2026-02-13,CARD_PAYMENT,FARMACIA PLAZA,-12.50,0,EUR,COMPLETED,487.5
