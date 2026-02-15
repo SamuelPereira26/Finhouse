@@ -78,7 +78,9 @@ export function checkDuplicates(
   const seen = new Set<string>();
   const duplicateTxIds = new Set<string>();
 
-  const accountLast4ById = new Map(Object.values(ACCOUNTS).map((account) => [account.id, account.last4]));
+  const accountLast4ById = new Map<string, string>(
+    Object.values(ACCOUNTS).map((account) => [account.id, account.last4] as [string, string])
+  );
 
   let duplicates = 0;
 
